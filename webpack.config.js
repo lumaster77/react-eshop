@@ -7,6 +7,7 @@ module.exports ={
     output:{
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
+        publicPath: '/'
     },
     resolve:{
         extensions:['.js','.jsx'],
@@ -30,7 +31,7 @@ module.exports ={
                 ]
             },
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.(c|sc)ss$/,
                 use:[
                     "style-loader",
                     "css-loader",
@@ -48,4 +49,12 @@ module.exports ={
 			filename: '[name].css'
 		}),
     ],
+    devServer:{
+        historyApiFallback: true,
+        static:{
+            directory: path.join(__dirname, 'dist'),
+            },
+        compress: true,
+        port:3005,
+    }
 }
